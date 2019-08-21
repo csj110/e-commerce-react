@@ -1,5 +1,7 @@
 import { Atom } from "@dbeining/react-atom";
 
-interface State {}
+interface State {
+  currentUser: any;
+}
 
-export const AppState: Atom<State> = Atom.of({});
+export const AppState: Atom<State> = Atom.of({ currentUser: 'faf' });
