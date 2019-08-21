@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import "./App.css";
+import axios from "axios";
+import { AppRouter } from "./AppRouter";
+import { Spinner, Intent, Card, Elevation } from "@blueprintjs/core";
 
 const App: React.FC = () => {
+  useEffect(() => {
+    axios.get("http://localhost:4000/api").then(res => console.log(res));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Spinner intent={Intent.PRIMARY} />
+      <Card interactive={true} elevation={Elevation.TWO}>
+        <AppRouter />
+      </Card>
     </div>
   );
-}
+};
 
 export default App;
